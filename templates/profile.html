@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
+        <div class="pd-20 card-box height-100-p">
+            <h5 class="text-center h5 mb-0">{{request.user.first_name}} {{request.user.last_name}}</h5>
+            <p class="text-center text-muted font-14 mt-2">
+                <strong>Subscription: </strong> {{request.user.plan_type}} Plan
+            </p>
+            <div class="profile-info">
+                <h5 class="mb-20 h5 text-dark">Contact Information</h5>
+                <ul>
+                    <li>
+                        <span class="text-info">Plan type :</span>
+                        {{request.user.plan_type}} Plan
+                    </li>
+                    <li>
+                        <span class="text-info">Suscribed Date :</span>
+                        {{request.user.suscribed_date}}
+                    </li>
+                    <li>
+                        <span class="text-info">Subscription Expiry Date :</span>
+                        {{request.user.expiry_date}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
+        <div class="card-box height-100-p overflow-hidden">
+            <div class="profile-tab height-100-p">
+                <div class="tab height-100-p">
+                    <ul class="nav nav-tabs customtab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#setting" role="tab" aria-selected="true">Settings</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Setting Tab start -->
+                        <div class="tab-pane fade height-100-p active show" id="setting" role="tabpanel">
+                            <div class="profile-setting">
+                                <form method="post" action="/profile">
+                                    {% csrf_token %}
+                                    <ul class="profile-edit-list row">
+                                        <li class="weight-500 col-md-12">
+                                            <h4 class="text-info h5 mb-20">
+                                                Edit your trading quantity
+                                            </h4>
+                                            <div class="form-group">
+                                                <label>Default Quantity</label>
+                                                <input class="form-control form-control-lg" type="number" name="default_quantity" value="{{request.user.default_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Crudeoil</label>
+                                                <input class="form-control form-control-lg" type="number" name="crudeoil_quantity" value="{{request.user.crudeoil_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nifty 50</label>
+                                                <input class="form-control form-control-lg" type="number" name="nifty_quantity" value="{{request.user.nifty_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bank Nifty</label>
+                                                <input class="form-control form-control-lg" type="number" name="bank_nifty_quantity" value="{{request.user.bank_nifty_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Fin Nifty</label>
+                                                <input class="form-control form-control-lg" type="number" name="fin_nifty_quantity" value="{{request.user.fin_nifty_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bankex</label>
+                                                <input class="form-control form-control-lg" type="number" name="bankex_quantity" value="{{request.user.bankex_quantity}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Sensex</label>
+                                                <input class="form-control form-control-lg" type="number" name="sensex_quantity" value="{{request.user.sensex_quantity}}">
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-info" value="Update Quantity">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Setting Tab End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

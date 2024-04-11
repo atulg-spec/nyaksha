@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="card-box pb-10">
+    <div class="h5 pd-20 mb-0">Your Portfolio</div>
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" style="overflow: auto;">
+        <div class="row">
+            <div class="col-sm-12" style="padding: 4%;">
+                <table class="data-table table nowrap dataTable no-footer dtr-inline collapsed" id="DataTables_Table_0"
+                    role="grid">
+                    <thead>
+                        <tr role="row">
+                            <th>Broker</th>
+                            <th>Symbol/Exchange</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Avg Price</th>
+                            <th>Ltp</th>
+                            <th>Pnl</th>
+                            <th>Pnl %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in holdings %}
+                        {% for y in x.data %}
+                        <tr>
+                            <td>Angel ONE</td>
+                            <td>{{y.tradingsymbol}} | {{y.exchange}}</td>
+                            <td>{{y.product}}</td>
+                            <td>{{y.quantity}}</td>
+                            <td>{{y.averageprice}}</td>
+                            <td>{{y.ltp}}</td>
+                            {% if y.profitandloss > 0 %}
+                            <td class="text-success">{{y.profitandloss}}</td>
+                            {% else %}
+                            <td class="text-danger">{{y.profitandloss}}</td>
+                            {% endif %}
+                            {% if y.pnlpercentage > 0 %}
+                            <td class="text-success">{{y.pnlpercentage}} %</td>
+                            {% else %}
+                            <td class="text-danger">{{y.pnlpercentage}} %</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            {% if total_pnl > 0 %}
+                            <td class="text-success"><strong>{{total_pnl}}</strong></td>
+                            {% else %}
+                            <td class="text-danger"><strong>{{total_pnl}}</strong></td>
+                            {% endif %}
+                            {% if total_pnl_per > 0 %}
+                            <td class="text-success"><strong>{{total_pnl_per}}</strong></td>
+                            {% else %}
+                            <td class="text-danger"><strong>{{total_pnl_per}}</strong></td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

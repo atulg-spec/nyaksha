@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async>
+            {
+                "symbols": [
+                    {
+                        "description": "SENSEXETF",
+                        "proName": "BSE:SENSEXETF"
+                    },
+                    {
+                        "description": "GMDCLTD",
+                        "proName": "BSE:GMDCLTD"
+                    },
+                    {
+                        "description": "KOTAK",
+                        "proName": "BSE:KOTAKBANK"
+                    },
+                    {
+                        "description": "BAJAJ_AUTO",
+                        "proName": "BSE:BAJAJ_AUTO"
+                    },
+                    {
+                        "description": "SBIN",
+                        "proName": "BSE:SBIN"
+                    },
+                    {
+                        "description": "ACC",
+                        "proName": "BSE:ACC"
+                    },
+                    {
+                        "description": "RKFORGE",
+                        "proName": "BSE:RKFORGE"
+                    },
+                    {
+                        "description": "ITC",
+                        "proName": "BSE:ITC"
+                    },
+                    {
+                        "description": "YESBANK",
+                        "proName": "BSE:YESBANK"
+                    },
+                    {
+                        "description": "SUZLON",
+                        "proName": "BSE:SUZLON"
+                    },
+                    {
+                        "description": "NHPC",
+                        "proName": "BSE:NHPC"
+                    },
+                    {
+                        "description": "TATAPOWER",
+                        "proName": "BSE:TATAPOWER"
+                    },
+                    {
+                        "description": "ASTRAL",
+                        "proName": "BSE:ASTRAL"
+                    },
+                    {
+                        "description": "IDFCFIRSTB",
+                        "proName": "BSE:IDFCFIRSTB"
+                    },
+                    {
+                        "description": "TCS",
+                        "proName": "BSE:TCS"
+                    },
+                    {
+                        "description": "BHARTIAIRTEL",
+                        "proName": "BSE:BHARTIARTL"
+                    },
+                    {
+                        "description": "PAYTM",
+                        "proName": "BSE:PAYTM"
+                    }
+                ],
+                    "showSymbolLogo": true,
+                        "isTransparent": false,
+                            "displayMode": "adaptive",
+                                "colorTheme": "light",
+                                    "locale": "en"
+            }
+        </script>
+</div>
+<br>
+<div class="card-box pb-10">
+    <div class="h5 pd-20 mb-0">Your APIs</div>
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" style="overflow: auto;">
+        <div class="row">
+            <div class="col-sm-12 col-md-6"></div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="padding: 4%;">
+                <table class="data-table table nowrap dataTable no-footer dtr-inline collapsed" id="DataTables_Table_0"
+                    role="grid">
+                    <thead>
+                        <tr role="row">
+                            <th>Broker</th>
+                            <th>API Name</th>
+                            <th>Created At</th>
+                            <th>Status</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in angelone %}
+                        <tr>
+                            <td>Angel ONE</td>
+                            <td>{{x.api_name}}</td>
+                            <td>{{x.created_time}}</td>
+                            {% if x.is_trading %}
+                            <td>
+                                <a href="/api/status/angel/{{x.id}}">
+                                    <span class="badge badge-pill" data-bgcolor="#e7ebf5" data-color="#26d74f"
+                                    style="color: rgb(38, 215, 103); background-color: rgb(231, 235, 245);">Active</span>
+                                </a>
+                            </td>
+                            {% else %}
+                            <td>
+                                <a href="/api/status/angel/{{x.id}}">
+                                <span class="badge badge-pill" data-bgcolor="#e7ebf5" data-color="#d72626"
+                                    style="color: rgb(215, 38, 38); background-color: rgb(231, 235, 245);">Inactive</span>
+                                </a>
+                            </td>
+                            {% endif %}
+                            <td>
+                                <div class="table-actions">
+                                    <a href="/api/delete/angel/{{x.id}}" data-color="#e95959"
+                                        style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
