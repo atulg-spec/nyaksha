@@ -2,8 +2,12 @@ from dashboard.alerts.utils import is_suscribed, present,get_quantity
 from apis.models import angel_api
 from dashboard.models import Response
 from django.utils import timezone
-from SmartApi import SmartConnect
 import pyotp
+try:
+    from SmartApi import SmartConnect 
+except:
+    from smartapi import SmartConnect 
+
 
 # --------------------ANGEL ONE API---------------------
 def angel_order(syntax,json_data):

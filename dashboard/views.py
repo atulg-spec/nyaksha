@@ -12,8 +12,11 @@ from django.contrib.auth import get_user_model
 from apis.models import angel_api
 from django.utils import timezone
 from datetime import datetime,timedelta
-from SmartApi import SmartConnect 
 import pyotp
+try:
+    from SmartApi import SmartConnect 
+except:
+    from smartapi import SmartConnect 
 
 User = get_user_model()
 

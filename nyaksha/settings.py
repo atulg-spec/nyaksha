@@ -144,5 +144,7 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://nyaksha.com',
+    'https://www.nyaksha.com',
     'http://127.0.0.1:8000',
 ]

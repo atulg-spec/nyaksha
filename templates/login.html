@@ -7,9 +7,9 @@
     <title>Nyaksha | Portfolio Management Dashboard Login / Register</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/logo.png" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -22,17 +22,37 @@
     <link rel="stylesheet" type="text/css" href="/static/styles/icon-font.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/styles/style.css" />
 </head>
+<style>
+    .custom_login {
+        background-image: url('https://media.istockphoto.com/id/1304944287/photo/man-makes-notes-about-portfolio-management-in-the-notepad.jpg?s=2048x2048&w=is&k=20&c=NKrJdfEBkLuVVIQvpfutGany1fpi7EE4-Rwq-0dFZ70=');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: none;
+        opacity: 0.90;
+        image-rendering: crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        /* Firefox */
+        image-rendering: -o-crisp-edges;
+        /* Opera */
+        image-rendering: -webkit-optimize-contrast;
+        /* Webkit (non-standard naming)*/
+        -ms-interpolation-mode: nearest-neighbor;
+        /* IE (non-standard property) */
 
-<body class="login-page">
-    <div class="login-header box-shadow">
+    }
+</style>
+
+<body class="login-page custom_login">
+    <div class="login-header box-shadow" style="background-color: rgba(0, 0, 0, 0.348);">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
-                <!-- <a href="/">
-					<img src="/static/images/deskapp-logo.svg" alt="" />
-				</a> -->
                 <a href="/">
-                    <h1>Nyaksha</h1>
-                </a>
+					<img src="/static/images/logo.png" alt="" width="100" height="100" class="mt-3"/>
+				</a>
+                <!-- <a href="/">
+                    <h1 class="text-white">Nyaksha</h1>
+                </a> -->
             </div>
         </div>
     </div>
@@ -41,9 +61,9 @@
             <div class="row align-items-center">
                 <div class="col-md-3 col-lg-4"></div>
                 <div class="col-md-6 col-lg-5">
-                    <div class="login-box bg-white box-shadow border-radius-10">
+                    <div class="login-box box-shadow border-radius-10" style="background-color: rgba(0, 0, 0, 0.284);">
                         <div class="login-title">
-                            <h2 class="text-center">Login To Nyaksha Dahboard</h2>
+                            <h2 class="text-center text-white">Login To Nyaksha Dahboard</h2>
                         </div>
                         {% if messages %}
                         {% for message in messages %}
@@ -57,14 +77,14 @@
                         {% endif %}
                         <form method="post">
                             {% csrf_token %}
-                            <label>Enter your Email</label>
+                            <label class="text-white">Enter your Email</label>
                             <div class="input-group custom">
                                 {{form.email}}
                                 <div class="input-group-append custom">
                                     <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
                                 </div>
                             </div>
-                            <label>Enter your password</label>
+                            <label class="text-white">Enter your password</label>
                             <div class="input-group custom">
                                 {{form.password}}
                                 <div class="input-group-append custom">
@@ -80,8 +100,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="input-group mb-0">
-                                    <a class="btn btn-outline-dark btn-lg btn-block"
-                                        href="/social-auth/login/google-oauth2/">
+                                    <a class="btn btn-dark btn-lg btn-block" href="/social-auth/login/google-oauth2/">
                                         <i class="fa fa-google-plus mr-2"></i>
                                         Continue with Google
                                     </a>
