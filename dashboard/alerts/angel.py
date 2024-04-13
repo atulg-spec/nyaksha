@@ -2,7 +2,7 @@ from dashboard.alerts.utils import is_suscribed, present,get_quantity
 from apis.models import angel_api
 from dashboard.models import Response
 from django.utils import timezone
-from smartapi import SmartConnect
+from SmartApi import SmartConnect
 import pyotp
 
 # --------------------ANGEL ONE API---------------------
