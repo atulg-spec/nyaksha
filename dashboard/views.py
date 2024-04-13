@@ -56,7 +56,7 @@ def plans(request):
     return render(request,'plans.html',context)
 
 
-login_required
+@login_required
 def contactus(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)

@@ -119,6 +119,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '715982619092-bvatv5mfq7dros3h67dstgt0r5o25mpi.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+
 
 
 STATIC_URL = '/static/'
