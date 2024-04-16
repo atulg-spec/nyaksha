@@ -45,10 +45,6 @@ class Webhook(models.Model):
     def __str__(self):
        return self.address
     
-    def save(self, *args, **kwargs):
-        self.address = f'http://127.0.0.1:8000/webhook/{self.url}'
-        super().save(*args, **kwargs)
-    
 
 from django.contrib.auth import get_user_model
 
