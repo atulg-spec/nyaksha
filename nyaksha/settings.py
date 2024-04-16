@@ -126,12 +126,12 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/prakashganga/static'
+STATIC_ROOT = 'static'
 MEDIA_URL="/media/"
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR, "static"),
-]
+#STATICFILES_DIRS =[
+#    os.path.join(BASE_DIR, "static"),
+#]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
@@ -139,11 +139,10 @@ MESSAGE_TAGS = {
 }
 
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_URL = '/logout'
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = '/'
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 
 
