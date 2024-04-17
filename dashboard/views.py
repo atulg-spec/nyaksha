@@ -12,8 +12,11 @@ from django.contrib.auth import get_user_model
 from apis.models import angel_api
 from django.utils import timezone
 from datetime import datetime,timedelta
-from smartapi import SmartConnect 
 import pyotp
+try:
+    from SmartApi import SmartConnect 
+except:
+    from smartapi import SmartConnect 
 
 User = get_user_model()
 
@@ -53,7 +56,7 @@ def plans(request):
     return render(request,'plans.html',context)
 
 
-login_required
+@login_required
 def contactus(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)

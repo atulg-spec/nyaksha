@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from smartapi import SmartConnect 
 import pyotp
+try:
+    from SmartApi import SmartConnect 
+except:
+    from smartapi import SmartConnect 
+
 
 User = get_user_model()
 
