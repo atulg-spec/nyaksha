@@ -195,4 +195,4 @@ def termsofuse(request):
 def handlelogout(request):
     logout(request)
     messages.success(request,"Logged out Successfully")
-    return redirect('/login')
+    return redirect('/')
