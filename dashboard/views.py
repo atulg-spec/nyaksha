@@ -174,3 +174,20 @@ def webhook(request,url):
     else:
         return redirect('/')
 # ---------END WEBHOOK-------------
+
+
+# PAGES 
+def privacypolicy(request):
+    return render(request,'privacypolicy.html')
+
+def refundpolicy(request):
+    return render(request,'refundpolicy.html')
+
+def about(request):
+    return render(request,'about.html')
+
+def disclaimer(request):
+    return render(request,'disclaimer.html')
+
+def termsofuse(request):
+    return render(request,'termsofuse.html')

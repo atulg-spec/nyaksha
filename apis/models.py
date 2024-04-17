@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 import pyotp
+from dhanhq import dhanhq
 try:
     from SmartApi import SmartConnect 
 except:
@@ -40,4 +41,29 @@ class angel_api(models.Model):
             raise ValidationError("Invalid Login Credentials")
         else:
             print(data)
+
+
+
+class dhan_api(models.Model):
+    id=models.AutoField(primary_key=True)
+    created_time = models.DateTimeField(auto_now_add=True,null=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    api_name = models.CharField(max_length=100,default="")
+    client_id = models.CharField(max_length=100,default="")
+    access_token = models.CharField(max_length=1000,default="")
+    is_trading = models.BooleanField(default=False)
+    class Meta:
+        verbose_name = "Dhan HQ API"
+        verbose_name_plural = "Dhan HQ API"
+        unique_together = [['api_name', 'client_id', 'access_token'],['user', 'api_name'],['client_id', 'access_token']]
+    def __str__(self):
+       return self.api_name
+    
+    def clean(self):
+        dhan = dhanhq(self.client_id,self.access_token)
+        print(dhan.get_positions())
+        dic = dhan.get_positions()
+        if not dic['status'] == 'success':
+            raise ValidationError("Invalid Login Credentials")
+
 

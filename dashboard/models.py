@@ -5,6 +5,13 @@ from django.utils import timezone
 import json
 from threading import Thread
 import requests
+from nyaksha.settings import EMAIL_HOST_USER
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
+
 
 PLAN_CHOICES = [
         ('Free', 'Free'),
@@ -18,6 +25,7 @@ PLAN_CHOICES = [
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
+    phone_number = models.PositiveIntegerField(blank=True, null=True)
     is_suscribed = models.BooleanField(default=False)
     plan_type = models.CharField(max_length=100,choices=PLAN_CHOICES,default="Free")
     suscribed_date = models.DateTimeField(auto_now_add=True,null=True)
@@ -91,8 +99,8 @@ class brokers(models.Model):
 class users(models.Model):
     user=models.CharField(max_length=100,default="")
     class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = "Subscription"
+        verbose_name_plural = "Subscription Types"
     def __str__(self):
         return self.user
 
@@ -183,3 +191,31 @@ def place_order(syntax,url):
     data = json.dumps(syntax)
     print(data)
     response = requests.post(url, data)
+
+
+
+
+# SIGNALS 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .models import CustomUser
+
+@receiver(post_save, sender=CustomUser)
+def send_welcome_email(sender, instance, created, **kwargs):
+    if True:
+        print('created')
+        subject = "Welcome to Nyaksha - Complete Your Profile Setup!"
+        print(instance.first_name)
+        context = {
+            'user':instance.first_name,
+        }
+        html_content = render_to_string('welcome-email.html', context)
+        content = strip_tags(html_content)
+        email = EmailMultiAlternatives(
+            subject,
+            content ,
+            EMAIL_HOST_USER ,
+            [instance.email]
+        )
+        email.attach_alternative(html_content,'text/html')
+        email.send()

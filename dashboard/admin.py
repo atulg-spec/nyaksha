@@ -5,14 +5,14 @@ from django.contrib.auth.models import Group
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'first_name', 'is_suscribed', 'is_active', 'is_staff')
+    list_display = ('email','phone_number' ,'first_name', 'is_suscribed', 'is_active', 'is_staff')
     list_filter = ('is_staff', 'is_active')
     readonly_fields = ('suscribed_date','expiry_date')
-    search_fields = ('email', 'first_name', 'last_name')
+    search_fields = ('email','phone_number' ,'first_name', 'last_name')
     ordering = ('email',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email','phone_number', 'password')}),
         ('Personal Info', {'fields': ('first_name', 'last_name')}),
         ('Quantiy Settings', {'fields': ('default_quantity', 'crudeoil_quantity','nifty_quantity','bank_nifty_quantity','fin_nifty_quantity','bankex_quantity','sensex_quantity')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
