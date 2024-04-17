@@ -6,7 +6,7 @@ from django.conf import settings
 import json
 from .forms import *
 from dashboard.alerts.angel import angel_order
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from apis.models import angel_api
@@ -191,3 +191,8 @@ def disclaimer(request):
 
 def termsofuse(request):
     return render(request,'termsofuse.html')
+
+def handlelogout(request):
+    logout(request)
+    messages.success(request,"Logged out Successfully")
+    return redirect('/login')
