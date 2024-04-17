@@ -18,5 +18,5 @@ urlpatterns = [
     path("termsofuse",termsofuse,name='termsofuse'),
     path("privacypolicy",privacypolicy,name='privacypolicy'),
     path("refundpolicy",refundpolicy,name='refundpolicy'),
-    path("logout",handlelogout,name='logout'),
+    path("logout/",handlelogout,name='logout'),
 ]
