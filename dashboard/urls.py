@@ -13,6 +13,7 @@ urlpatterns = [
     path("plans",plans,name='plans'),
     path("contactus",contactus,name='contactus'),
     # # POLICY
+    path("indicator",indicator,name='indicator'),
     path("about",about,name='about'),
     path("disclaimer",disclaimer,name='disclaimer'),
     path("termsofuse",termsofuse,name='termsofuse'),

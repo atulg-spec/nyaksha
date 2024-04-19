@@ -1,63 +1,71 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="card-box pb-10">
-    <div class="h5 pd-20 mb-0">Your Portfolio</div>
-    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" style="overflow: auto;">
-        <div class="row">
-            <div class="col-sm-12" style="padding: 4%;">
-                <table class="data-table table nowrap dataTable no-footer dtr-inline collapsed" id="DataTables_Table_0"
-                    role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th>Broker</th>
-                            <th>Symbol/Exchange</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Avg Price</th>
-                            <th>Ltp</th>
-                            <th>Pnl</th>
-                            <th>Pnl %</th>
+<div class="bg-indigo-600 px-8 pt-10 lg:pt-14 pb-16 flex justify-between items-center mb-3">
+    <!-- title -->
+    <h1 class="text-xl text-white">Portfolio</h1>
+</div>
+<div class="-mt-12 mx-6 mb-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-1 xl:grid-cols-1">
+    <!-- card -->
+    <div class="card shadow">
+        <!-- card body -->
+        <div class="card-body">
+            <!-- content -->
+            <div class="flex justify-between items-center">
+                <h5>Just patience and believe can gives <strong>100% results</strong></h5>
+            </div>
+            <div class="mt-4 flex flex-col gap-0 text-base">
+                <table class="text-left w-full whitespace-nowrap border border-gray-300">
+                    <thead class="">
+                        <tr class="border-gray-300 border-b ">
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">#</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Symbol/ Exchange</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Product</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Qty</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">AvgPrice</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Ltp</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl</th>
+                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl%</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y ">
                         {% for x in holdings %}
                         {% for y in x.data %}
-                        <tr>
-                            <td>Angel ONE</td>
-                            <td>{{y.tradingsymbol}} | {{y.exchange}}</td>
-                            <td>{{y.product}}</td>
-                            <td>{{y.quantity}}</td>
-                            <td>{{y.averageprice}}</td>
-                            <td>{{y.ltp}}</td>
+                        <tr class="border-gray-300 border-b ">
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">Angel ONE</td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.tradingsymbol}} | {{y.exchange}}</td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.product}}</td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.quantity}}</td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.averageprice}}</td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.ltp}}</td>
                             {% if y.profitandloss > 0 %}
-                            <td class="text-success">{{y.profitandloss}}</td>
+                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{y.profitandloss}}</td>
                             {% else %}
-                            <td class="text-danger">{{y.profitandloss}}</td>
+                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{y.profitandloss}}</td>
                             {% endif %}
                             {% if y.pnlpercentage > 0 %}
-                            <td class="text-success">{{y.pnlpercentage}} %</td>
+                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{y.pnlpercentage}}</td>
                             {% else %}
-                            <td class="text-danger">{{y.pnlpercentage}} %</td>
+                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{y.pnlpercentage}}</td>
                             {% endif %}
                         </tr>
                         {% endfor %}
                         {% endfor %}
-                        <tr>
-                            <td><strong>Total</strong></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr class="border-gray-300 border-b ">
+                            <td class="py-3 px-6 text-left border-r"></td>
+                            <td class="py-3 px-6 text-left border-r"></td>
+                            <td class="py-3 px-6 text-left border-r"></td>
+                            <td class="py-3 px-6 text-left border-r"></td>
+                            <td class="py-3 px-6 text-left border-r"></td>
+                            <td class="py-3 px-6 text-left border-r border-gray-300"></td>
                             {% if total_pnl > 0 %}
-                            <td class="text-success"><strong>{{total_pnl}}</strong></td>
+                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl}}</td>
                             {% else %}
-                            <td class="text-danger"><strong>{{total_pnl}}</strong></td>
+                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl}}</td>
                             {% endif %}
                             {% if total_pnl_per > 0 %}
-                            <td class="text-success"><strong>{{total_pnl_per}}</strong></td>
+                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl_per}}</td>
                             {% else %}
-                            <td class="text-danger"><strong>{{total_pnl_per}}</strong></td>
+                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl_per}}</td>
                             {% endif %}
                         </tr>
                     </tbody>
@@ -66,4 +74,5 @@
         </div>
     </div>
 </div>
+<br><br><br><br>
 {% endblock body %}

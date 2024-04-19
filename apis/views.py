@@ -22,7 +22,27 @@ def angelone(request):
     context = {
         'form':AngelOneForm()
     }
-    return render(request,'api/angelone.html',context)
+    return render(request,'api/angelone.html',context)\
+    
+
+@login_required
+def dhanhq(request):
+    if request.method == 'POST':
+        form = DhanForm(request.POST)
+        if form.is_valid():
+            app = form.save(commit=False)
+            app.user = request.user
+            app.save()
+            messages.success(request,'API logged in successfully')
+            return redirect('/dashboard')
+        else:
+            errors = form.errors.items()
+            for x in errors:
+                messages.error(request,f'{x}')
+    context = {
+        'form':DhanForm()
+    }
+    return render(request,'api/dhanhq.html',context)
 
 
 @login_required

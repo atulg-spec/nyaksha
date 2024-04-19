@@ -2,8 +2,8 @@
 {% block body %}
 <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-        async>
+    <script type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
             {
                 "symbols": [
                     {
@@ -83,60 +83,49 @@
             }
         </script>
 </div>
-<br>
-<div class="card-box pb-10">
-    <div class="h5 pd-20 mb-0">Your APIs</div>
-    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" style="overflow: auto;">
-        <div class="row">
-            <div class="col-sm-12 col-md-6"></div>
-            <div class="col-sm-12 col-md-6"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12" style="padding: 4%;">
-                <table class="data-table table nowrap dataTable no-footer dtr-inline collapsed" id="DataTables_Table_0"
-                    role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th>Broker</th>
-                            <th>API Name</th>
-                            <th>Created At</th>
-                            <th>Status</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for x in angelone %}
-                        <tr>
-                            <td>Angel ONE</td>
-                            <td>{{x.api_name}}</td>
-                            <td>{{x.created_time}}</td>
-                            {% if x.is_trading %}
-                            <td>
-                                <a href="/api/status/angel/{{x.id}}">
-                                    <span class="badge badge-pill" data-bgcolor="#e7ebf5" data-color="#26d74f"
-                                    style="color: rgb(38, 215, 103); background-color: rgb(231, 235, 245);">Active</span>
-                                </a>
-                            </td>
-                            {% else %}
-                            <td>
-                                <a href="/api/status/angel/{{x.id}}">
-                                <span class="badge badge-pill" data-bgcolor="#e7ebf5" data-color="#d72626"
-                                    style="color: rgb(215, 38, 38); background-color: rgb(231, 235, 245);">Inactive</span>
-                                </a>
-                            </td>
-                            {% endif %}
-                            <td>
-                                <div class="table-actions">
-                                    <a href="/api/delete/angel/{{x.id}}" data-color="#e95959"
-                                        style="color: rgb(233, 89, 89);"><i class="icon-copy dw dw-delete-3"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+<div class="bg-indigo-600 px-8 pt-10 lg:pt-14 pb-16 flex justify-between items-center mb-3">
+    <!-- title -->
+    <h1 class="text-xl text-white">Your API's</h1>
+    <a href="/api/angelone"
+        class="btn bg-white text-gray-800 border-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:border-gray-200 active:bg-gray-100 active:text-gray-800 active:border-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+        Add new account
+    </a>
+</div>
+<div class="-mt-12 mx-6 mb-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 xl:grid-cols-4">
+    <!-- card -->
+    {% for x in angelone %}
+    <div class="card shadow">
+        <!-- card body -->
+        <div class="card-body">
+            <!-- content -->
+            <div class="flex justify-between items-center">
+                <h4>Angel ONE</h4>
+                <div
+                    class="bg-indigo-600 bg-opacity-10 rounded-md w-10 h-10 flex items-center justify-center text-center text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-briefcase">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-col gap-0 text-base">
+                <h4 class="">{{x.client_id}}</h4>
+                <div>
+                    <span>{{x.api_name}}</span>
+                    {% if x.is_trading %}
+                    <a href="/api/status/angel/{{x.id}}"
+                        class="bg-teal-500 px-2 py-1 text-white text-sm font-medium rounded-full inline-block whitespace-nowrap text-center">Active</a>
+                    {% else %}
+                    <a href="/api/status/angel/{{x.id}}"
+                        class="bg-red-500 px-2 py-1 text-white text-sm font-medium rounded-full inline-block whitespace-nowrap text-center">Inactive</a>
+                    {% endif %}
+                    <p class="text-gray-500">{{x.created_time}}</p>
+                </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock body %}

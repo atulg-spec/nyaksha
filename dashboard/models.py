@@ -202,7 +202,7 @@ from .models import CustomUser
 
 @receiver(post_save, sender=CustomUser)
 def send_welcome_email(sender, instance, created, **kwargs):
-    if True:
+    if created:
         print('created')
         subject = "Welcome to Nyaksha - Complete Your Profile Setup!"
         print(instance.first_name)

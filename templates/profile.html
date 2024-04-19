@@ -1,99 +1,95 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
-        <div class="pd-20 card-box height-100-p">
-            <h5 class="text-center h5 mb-0">{{request.user.first_name}} {{request.user.last_name}}</h5>
-            <p class="text-center text-muted font-14 mt-2">
-                <strong>Subscription: </strong> {{request.user.plan_type}} Plan
-            </p>
-            <div class="profile-info">
-                <h5 class="mb-20 h5 text-dark">Contact Information</h5>
-                <ul>
-                    <li>
-                        <span class="text-info">Phone Number :</span>
-                        {{request.user.phone_number}}
-                    </li>
-                    <li>
-                        <span class="text-info">Plan type :</span>
-                        {{request.user.plan_type}} Plan
-                    </li>
-                    <li>
-                        <span class="text-info">Suscribed Date :</span>
-                        {{request.user.suscribed_date}}
-                    </li>
-                    <li>
-                        <span class="text-info">Subscription Expiry Date :</span>
-                        {{request.user.expiry_date}}
-                    </li>
-                </ul>
-                <div class="card" style="margin-top: 30%;">
-                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
-                </div>
-            </div>
-        </div>
+<div class="p-6">
+    <div class="flex items-center mb-4 border-b border-gray-300 pb-4">
+        <!-- title -->
+        <h1 class="inline-block text-xl font-semibold leading-6">Profile</h1>
     </div>
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
-        <div class="card-box height-100-p overflow-hidden">
-            <div class="profile-tab height-100-p">
-                <div class="tab height-100-p">
-                    <ul class="nav nav-tabs customtab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active text-info" data-toggle="tab" href="#setting" role="tab" aria-selected="true">Settings</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <!-- Setting Tab start -->
-                        <div class="tab-pane fade height-100-p active show" id="setting" role="tabpanel">
-                            <div class="profile-setting">
-                                <form method="post" action="/profile">
-                                    {% csrf_token %}
-                                    <ul class="profile-edit-list row">
-                                        <li class="weight-500 col-md-12">
-                                            <h4 class="text-info h5 mb-20">
-                                                Edit your trading quantity
-                                            </h4>
-                                            <div class="form-group">
-                                                <label>Default Quantity</label>
-                                                <input class="form-control form-control-lg" type="number" name="default_quantity" value="{{request.user.default_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Crudeoil</label>
-                                                <input class="form-control form-control-lg" type="number" name="crudeoil_quantity" value="{{request.user.crudeoil_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nifty 50</label>
-                                                <input class="form-control form-control-lg" type="number" name="nifty_quantity" value="{{request.user.nifty_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank Nifty</label>
-                                                <input class="form-control form-control-lg" type="number" name="bank_nifty_quantity" value="{{request.user.bank_nifty_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Fin Nifty</label>
-                                                <input class="form-control form-control-lg" type="number" name="fin_nifty_quantity" value="{{request.user.fin_nifty_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bankex</label>
-                                                <input class="form-control form-control-lg" type="number" name="bankex_quantity" value="{{request.user.bankex_quantity}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sensex</label>
-                                                <input class="form-control form-control-lg" type="number" name="sensex_quantity" value="{{request.user.sensex_quantity}}">
-                                            </div>
-                                            <div class="form-group mb-0">
-                                                <input type="submit" class="btn btn-info" value="Update Settings">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Setting Tab End -->
+    <div class="block">
+        <div class="flex items-center p-5 rounded-t-md shadow bg-cover bg-no-repeat pt-28"
+            style="background-image: url(/static/images/background/profile-cover.jpg)"></div>
+        <div class="bg-white rounded-b-md shadow mb-6">
+            <div class="flex items-center justify-between pt-4 pb-6 px-4">
+                <div class="flex items-center">
+                    <!-- avatar -->
+                    <div class="w-24 h-24 mr-2 relative flex justify-end items-end -mt-10">
+                        <img src="/static/images/avatar/avatar-1.jpg" class="rounded-full border-4 border-white" alt="">
+                        <a href="#!" class="absolute top-0 right-0 mr-2" data-bs-toggle="tooltip" data-placement="top"
+                            title="" data-original-title="Verified" data-bs-original-title="">
+                            <img src="/static/images/svg/checked-mark.svg" alt="" height="30" width="30">
+                        </a>
+                    </div>
+                    <!-- text -->
+                    <div class="leading-4">
+                        <h2 class="mb-2 text-lg whitespace-nowrap uppercase">
+                            {{request.user.first_name}}
+                            <a href="#!" class="text-decoration-none" data-bs-toggle="tooltip" data-placement="top"
+                                title="" data-original-title="Beginner" data-bs-original-title=""></a>
+                        </h2>
+                        <p class="mb-0 text-gray-500">{{request.user.first_name}} {{request.user.last_name}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="mb-6 grid grid-cols-1 gap-x-6 gap-y-8 xl:grid-cols-2">
+        <!-- card -->
+        <div class="card shadow">
+            <!-- card body -->
+            <div class="card-body">
+                <!-- card title -->
+                <h4 class="mb-6">About Me</h4>
+                <div class="mb-5">
+                    <!-- text -->
+                    <h5 class="uppercase tracking-widest text-sm font-semibold">E-mail</h5>
+                    <p class="mb-0">{{request.user.email}}</p>
+                </div>
+                <!-- content -->
+                <div class="flex flex-row justify-between mb-5">
+                    <div class="flex-1">
+                        <h5 class="uppercase tracking-widest text-sm font-semibold">Phone</h5>
+                        <p class="mb-0">{{request.user.phone_number}}</p>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="uppercase tracking-widest text-sm font-semibold">Joined Date</h5>
+                        <p class="mb-0">{{request.user.date_joined}}</p>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-between mb-5">
+                    <div class="flex-1">
+                        <h5 class="uppercase tracking-widest text-sm font-semibold">Suscribed Date</h5>
+                        <p class="mb-0">{{request.user.suscribed_date}}</p>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="uppercase tracking-widest text-sm font-semibold">Expiry Date</h5>
+                        <p class="mb-0">{{request.user.expiry_date}}</p>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-between mb-5">
+                    <div class="flex-1">
+                        <h5 class="uppercase tracking-widest text-sm font-semibold">Plan type</h5>
+                        <p class="mb-0">{{request.user.plan_type}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card -->
+        <div class="card shadow">
+            <!-- card body -->
+            <div class="card-body">
+                <!-- card title -->
+                <h4 class="mb-6">Quantity Settings</h4>
+                <form method="post" action="/profile">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit"
+                        class="btn gap-x-2 bg-indigo-600 text-white border-indigo-600 disabled:opacity-50 disabled:pointer-events-none hover:bg-indigo-800 hover:border-indigo-800 active:bg-indigo-800 active:border-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+<br><br><br><br>
 {% endblock body %}

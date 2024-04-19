@@ -73,15 +73,16 @@ def contactus(request):
 @login_required
 def profile(request):
     if request.method == 'POST':
-        request.user.default_quantity = request.POST.get('default_quantity')
-        request.user.crudeoil_quantity = request.POST.get('crudeoil_quantity')
-        request.user.nifty_quantity = request.POST.get('nifty_quantity')
-        request.user.bank_nifty_quantity = request.POST.get('bank_nifty_quantity')
-        request.user.fin_nifty_quantity = request.POST.get('fin_nifty_quantity')
-        request.user.bankex_quantity = request.POST.get('bankex_quantity')
-        request.user.sensex_quantity = request.POST.get('sensex_quantity')
-        request.user.save()
-    return render(request,'profile.html')
+        form = CustomUserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/profile')  # Redirect to user's profile page after successful update
+    else:
+        form = CustomUserUpdateForm(instance=request.user)
+    context = {
+        'form':form,
+    }
+    return render(request,'profile.html',context)
 
 
 @login_required
@@ -152,6 +153,10 @@ def performance(request):
     return render(request,'soon.html')
 
 
+@login_required
+def indicator(request):
+    return render(request,'indicator.html')
+
 # WEBHOOK ALERT
 @csrf_exempt
 def webhook(request,url):
@@ -196,3 +201,9 @@ def handlelogout(request):
     logout(request)
     messages.success(request,"Logged out Successfully")
     return redirect('/')
+
+def error_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+def error_500_view(request):
+    return render(request, '500.html', status=500)
