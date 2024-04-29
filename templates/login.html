@@ -23,14 +23,24 @@
 </head>
 
 <body>
+    <div class="bg-indigo-600 px-8 pt-4 lg:pt-2 pb-4 flex justify-between items-center mb-8">
+        <!-- title -->
+        <a class="navbar-brand" href="/dashboard">
+            <img src="https://nyaksha.com/static/images/brand/logo/logo.svg" width="38%" alt="" />
+        </a>
+    </div>
+    <br>
     <!-- start signin page -->
-    <div class="flex flex-col items-center justify-center g-0 h-screen px-4">
+    <div class="flex flex-col items-center justify-center mb-4 g-0 px-4">
         <!-- card -->
+
         <div class="justify-center items-center w-full bg-white rounded-md shadow lg:flex md:mt-0 max-w-md xl:p-0">
             <!-- card body -->
+
             <div class="p-6 w-full sm:p-8 lg:p-8">
                 <div class="mb-2 p-2 w-full">
-                    <img src="/static/images/brand/logo/logo-primary.svg" width="40%" class="mb-1 px-2" alt="" />
+                    <img src="https://nyaksha.com/static/images/brand/logo/logo-primary.svg" width="40%"
+                        class="mb-1 px-2" alt="" />
                     <p class="mb-6">Please enter your user information.</p>
                 </div>
                 {% if messages %}
@@ -76,6 +86,36 @@
             </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br>
+
+    <footer class="rounded-sm shadow m-4 bg-gray-800" style="bottom: 0;position: fixed; width: 100%;">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nyaksha.com"
+                    class="hover:underline">Nyaksha</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="/about" target="_blank" class="hover:underline px-4 me-4 md:me-6">About Us</a>
+                </li>
+                <li>
+                    <a href="/disclaimer" target="_blank" class="hover:underline px-4 me-4 md:me-6">Disclaimer</a>
+                </li>
+                <li>
+                    <a href="/termsofuse" target="_blank" class="hover:underline px-4 me-4 md:me-6">Terms of Use</a>
+                </li>
+                <li>
+                    <a href="/privacypolicy" target="_blank" class="hover:underline px-4 me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="/refundpolicy" target="_blank" class="hover:underline px-4 me-4 md:me-6">Refund Policy</a>
+                </li>
+                <li>
+                    <a href="/contactus" target="_blank" class="hover:underline px-4">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
     <!-- end of signin page -->
 
     <!-- Libs JS -->

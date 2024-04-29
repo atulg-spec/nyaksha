@@ -10,66 +10,77 @@
         <!-- card body -->
         <div class="card-body">
             <!-- content -->
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-2">
                 <h5>Just patience and believe can gives <strong>100% results</strong></h5>
             </div>
-            <div class="mt-4 flex flex-col gap-0 text-base">
-                <table class="text-left w-full whitespace-nowrap border border-gray-300">
-                    <thead class="">
-                        <tr class="border-gray-300 border-b ">
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">#</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Symbol/ Exchange</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Product</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Qty</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">AvgPrice</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Ltp</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl</th>
-                            <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl%</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y ">
-                        {% for x in holdings %}
-                        {% for y in x.data %}
-                        <tr class="border-gray-300 border-b ">
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">Angel ONE</td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.tradingsymbol}} | {{y.exchange}}</td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.product}}</td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.quantity}}</td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.averageprice}}</td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.ltp}}</td>
-                            {% if y.profitandloss > 0 %}
-                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{y.profitandloss}}</td>
-                            {% else %}
-                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{y.profitandloss}}</td>
-                            {% endif %}
-                            {% if y.pnlpercentage > 0 %}
-                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{y.pnlpercentage}}</td>
-                            {% else %}
-                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{y.pnlpercentage}}</td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                        {% endfor %}
-                        <tr class="border-gray-300 border-b ">
-                            <td class="py-3 px-6 text-left border-r"></td>
-                            <td class="py-3 px-6 text-left border-r"></td>
-                            <td class="py-3 px-6 text-left border-r"></td>
-                            <td class="py-3 px-6 text-left border-r"></td>
-                            <td class="py-3 px-6 text-left border-r"></td>
-                            <td class="py-3 px-6 text-left border-r border-gray-300"></td>
-                            {% if total_pnl > 0 %}
-                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl}}</td>
-                            {% else %}
-                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl}}</td>
-                            {% endif %}
-                            {% if total_pnl_per > 0 %}
-                            <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl_per}}</td>
-                            {% else %}
-                            <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl_per}}</td>
-                            {% endif %}
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="tab-pane fade show active rounded-md" id="pills-design-bordered-table" role="tabpanel"
+                aria-labelledby="pills-design-bordered-table-tab" tabindex="0">
+                <div class="relative overflow-x-auto">
+                    <table class="text-left w-full whitespace-nowrap border border-gray-300">
+                        <thead class="">
+                            <tr class="border-gray-300 border-b ">
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">#</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Symbol/ Exchange</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Product</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Qty</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">AvgPrice</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Ltp</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl</th>
+                                <th scope="col" class="px-6 py-3 border-r border-gray-300 ">Pnl%</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y ">
+                            {% for x in holdings %}
+                            {% for y in x.data %}
+                            <tr class="border-gray-300 border-b ">
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">Angel ONE</td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.tradingsymbol}} |
+                                    {{y.exchange}}</td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.product}}</td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.quantity}}</td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.averageprice}}</td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300 ">{{y.ltp}}</td>
+                                {% if y.profitandloss > 0 %}
+                                <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">
+                                    {{y.profitandloss}}</td>
+                                {% else %}
+                                <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">
+                                    {{y.profitandloss}}</td>
+                                {% endif %}
+                                {% if y.pnlpercentage > 0 %}
+                                <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">
+                                    {{y.pnlpercentage}}</td>
+                                {% else %}
+                                <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">
+                                    {{y.pnlpercentage}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                            {% endfor %}
+                            <tr class="border-gray-300 border-b ">
+                                <td class="py-3 px-6 text-left border-r"></td>
+                                <td class="py-3 px-6 text-left border-r"></td>
+                                <td class="py-3 px-6 text-left border-r"></td>
+                                <td class="py-3 px-6 text-left border-r"></td>
+                                <td class="py-3 px-6 text-left border-r"></td>
+                                <td class="py-3 px-6 text-left border-r border-gray-300"></td>
+                                {% if total_pnl > 0 %}
+                                <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl}}
+                                </td>
+                                {% else %}
+                                <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl}}</td>
+                                {% endif %}
+                                {% if total_pnl_per > 0 %}
+                                <td class="py-3 px-6 text-left text-success border-r border-gray-300 ">{{total_pnl_per}}
+                                </td>
+                                {% else %}
+                                <td class="py-3 px-6 text-left text-danger border-r border-gray-300 ">{{total_pnl_per}}
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
