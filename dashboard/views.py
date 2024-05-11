@@ -55,7 +55,6 @@ def plans(request):
     }
     return render(request,'plans.html',context)
 
-
 @login_required
 def contactus(request):
     if request.method == 'POST':
@@ -182,21 +181,6 @@ def webhook(request,url):
 
 
 # PAGES 
-def privacypolicy(request):
-    return render(request,'privacypolicy.html')
-
-def refundpolicy(request):
-    return render(request,'refundpolicy.html')
-
-def about(request):
-    return render(request,'about.html')
-
-def disclaimer(request):
-    return render(request,'disclaimer.html')
-
-def termsofuse(request):
-    return render(request,'termsofuse.html')
-
 def handlelogout(request):
     logout(request)
     messages.success(request,"Logged out Successfully")

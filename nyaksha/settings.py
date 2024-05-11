@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'home',
     'dashboard',
     'apis',
 ]
@@ -129,19 +130,19 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 MEDIA_URL="/media/"
 
-#STATICFILES_DIRS =[
-#    os.path.join(BASE_DIR, "static"),
-#]
+# STATICFILES_DIRS =[
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-LOGIN_URL = '/'
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
+LOGIN_REDIRECT_URL = "/login"
+LOGOUT_REDIRECT_URL = "/login"
+LOGIN_URL = '/login'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 

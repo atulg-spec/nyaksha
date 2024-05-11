@@ -3,7 +3,7 @@ from dashboard.views import *
 # urls.py
 urlpatterns = [
     # PAGES
-    path("",handle_login,name='login'),
+    path("login",handle_login,name='login'),
     path("dashboard",dashboard,name='dashboard'),
     path("webhook/<str:url>",webhook,name='webhook'),
     path("history",history,name='history'),
@@ -14,10 +14,5 @@ urlpatterns = [
     path("contactus",contactus,name='contactus'),
     # # POLICY
     path("indicator",indicator,name='indicator'),
-    path("about",about,name='about'),
-    path("disclaimer",disclaimer,name='disclaimer'),
-    path("termsofuse",termsofuse,name='termsofuse'),
-    path("privacypolicy",privacypolicy,name='privacypolicy'),
-    path("refundpolicy",refundpolicy,name='refundpolicy'),
     path("logout/",handlelogout,name='logout'),
 ]
