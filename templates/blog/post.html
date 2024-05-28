@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% block metatags %}
+<meta name="description" content="{{post.short_description}}" />
+<meta name="keywords" content="{{post.keywords}}">
+<link rel="canonical" href="{{post.referance_url}}">
+<meta name="author" content="{{post.author}}">
+{% endblock metatags %}
+{% block title %}{{post.title}}{% endblock title %}
+{% block body %}
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{post.title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="blog">
+    <div class="more-info about-info">
+        <div class="container mb-4 mt-4">
+            {{post.blog|safe}}
+        </div>
+    </div>
+</section>
+<center>
+    <div class="col-md-10">
+        <div class="service-item">
+            <div class="down-content">
+                <h4 class="text-left">Recent Blogs</h4>
+                <div class="text-left mt-4 mb-4">
+                    {% for x in all_post reversed %}
+                    <a class="text-left" href="https://nyaksha.com/{{x.slug}}">
+                        <span class="text-dark">#</span> {{x.title}}
+                    </a><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+    </div>
+</center>
+{% endblock body %}

@@ -1,3 +1,4 @@
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from dashboard.manager import *
@@ -11,6 +12,8 @@ from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
+from django.utils.text import slugify
+from django.urls import reverse  # Import reverse function
 
 
 PLAN_CHOICES = [
@@ -219,3 +222,25 @@ def send_welcome_email(sender, instance, created, **kwargs):
         )
         email.attach_alternative(html_content,'text/html')
         email.send()
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    keywords = models.CharField(max_length=250,default="Nyaksha")
+    short_description = models.TextField()
+    referance_url = models.CharField(max_length=500)
+    author = models.CharField(max_length=50,default="Nyaksha")
+    blog = CKEditor5Field('Text', config_name='extends')
+    created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True,default="slug")
+
+    def __str__(self):
+        return self.slug
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'slug': self.slug})
+

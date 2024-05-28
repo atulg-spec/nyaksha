@@ -5,16 +5,18 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="TemplateMo">
+  {% block metatags %}
+  <meta name="description" content="Nyaksha your portfolio manager, Nyaksha stock market, | Portfolio manager" />
+  <meta name="keywords" content="Nyaksha your portfolio manager, Nyaksha stock market, | Portfolio manager">
+  <link rel="canonical" href="https://nyaksha.com">
+  <meta name="author" content="NYAKSHA">
+  {% endblock metatags %}
+  <meta name="robots" content="index, follow">
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
     rel="stylesheet">
-
   <title>Nyaksha Portfolio Management</title>
-
   <!-- Bootstrap core CSS -->
   <link href="/static/landing/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="/static/landing/assets/css/fontawesome.css">
   <link rel="stylesheet" href="/static/landing/assets/css/templatemo-finance-business.css">
@@ -44,9 +46,11 @@
         </div>
         <div class="col-md-4">
           <ul class="right-icons">
-            <li><a href="https://www.facebook.com/share/azf8bpN276dzf8Jx/?mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://www.instagram.com/nyaksha2024?igsh=MTZ3cGM0ZjVxOGwweQ%3D%3D&utm_source=qr"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/share/azf8bpN276dzf8Jx/?mibextid=LQQJ4d" target="_blank"><i
+                  class="fa fa-facebook"></i></a></li>
+            <li><a href="https://x.com/nyaksha61?t=ExXBOKxPQc3MExJy4rjwig&s=09" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/nyaksha2024?igsh=MTZ3cGM0ZjVxOGwweQ%3D%3D&utm_source=qr" target="_blank"><i
+                  class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
       </div>
@@ -57,95 +61,95 @@
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-        async>
+      async>
+        {
+          "symbols": [
             {
-                "symbols": [
-                    {
-                        "description": "SENSEXETF",
-                        "proName": "BSE:SENSEXETF"
-                    },
-                    {
-                        "description": "GMDCLTD",
-                        "proName": "BSE:GMDCLTD"
-                    },
-                    {
-                        "description": "KOTAK",
-                        "proName": "BSE:KOTAKBANK"
-                    },
-                    {
-                        "description": "BAJAJ_AUTO",
-                        "proName": "BSE:BAJAJ_AUTO"
-                    },
-                    {
-                        "description": "SBIN",
-                        "proName": "BSE:SBIN"
-                    },
-                    {
-                        "description": "ACC",
-                        "proName": "BSE:ACC"
-                    },
-                    {
-                        "description": "RKFORGE",
-                        "proName": "BSE:RKFORGE"
-                    },
-                    {
-                        "description": "ITC",
-                        "proName": "BSE:ITC"
-                    },
-                    {
-                        "description": "YESBANK",
-                        "proName": "BSE:YESBANK"
-                    },
-                    {
-                        "description": "SUZLON",
-                        "proName": "BSE:SUZLON"
-                    },
-                    {
-                        "description": "NHPC",
-                        "proName": "BSE:NHPC"
-                    },
-                    {
-                        "description": "TATAPOWER",
-                        "proName": "BSE:TATAPOWER"
-                    },
-                    {
-                        "description": "ASTRAL",
-                        "proName": "BSE:ASTRAL"
-                    },
-                    {
-                        "description": "IDFCFIRSTB",
-                        "proName": "BSE:IDFCFIRSTB"
-                    },
-                    {
-                        "description": "TCS",
-                        "proName": "BSE:TCS"
-                    },
-                    {
-                        "description": "BHARTIAIRTEL",
-                        "proName": "BSE:BHARTIARTL"
-                    },
-                    {
-                        "description": "PAYTM",
-                        "proName": "BSE:PAYTM"
-                    }
-                ],
-                    "showSymbolLogo": true,
-                        "isTransparent": false,
-                            "displayMode": "adaptive",
-                                "colorTheme": "transparent",
-                                    "locale": "en"
+              "description": "SENSEXETF",
+              "proName": "BSE:SENSEXETF"
+            },
+            {
+              "description": "GMDCLTD",
+              "proName": "BSE:GMDCLTD"
+            },
+            {
+              "description": "KOTAK",
+              "proName": "BSE:KOTAKBANK"
+            },
+            {
+              "description": "BAJAJ_AUTO",
+              "proName": "BSE:BAJAJ_AUTO"
+            },
+            {
+              "description": "SBIN",
+              "proName": "BSE:SBIN"
+            },
+            {
+              "description": "ACC",
+              "proName": "BSE:ACC"
+            },
+            {
+              "description": "RKFORGE",
+              "proName": "BSE:RKFORGE"
+            },
+            {
+              "description": "ITC",
+              "proName": "BSE:ITC"
+            },
+            {
+              "description": "YESBANK",
+              "proName": "BSE:YESBANK"
+            },
+            {
+              "description": "SUZLON",
+              "proName": "BSE:SUZLON"
+            },
+            {
+              "description": "NHPC",
+              "proName": "BSE:NHPC"
+            },
+            {
+              "description": "TATAPOWER",
+              "proName": "BSE:TATAPOWER"
+            },
+            {
+              "description": "ASTRAL",
+              "proName": "BSE:ASTRAL"
+            },
+            {
+              "description": "IDFCFIRSTB",
+              "proName": "BSE:IDFCFIRSTB"
+            },
+            {
+              "description": "TCS",
+              "proName": "BSE:TCS"
+            },
+            {
+              "description": "BHARTIAIRTEL",
+              "proName": "BSE:BHARTIARTL"
+            },
+            {
+              "description": "PAYTM",
+              "proName": "BSE:PAYTM"
             }
-        </script>
-</div>
+          ],
+            "showSymbolLogo": true,
+              "isTransparent": false,
+                "displayMode": "adaptive",
+                  "colorTheme": "transparent",
+                    "locale": "en"
+        }
+      </script>
+  </div>
 
 
   <!-- Header -->
-  
+
   <header class="">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <h2>NYAKSHA</h2>
+          <h2>NYAKSHA Soft.</h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
           aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -160,6 +164,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/what-is-nyaksha">Blogs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact Us</a>
@@ -179,21 +186,24 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 footer-item">
-          <h4>NYAKSHA CAPITALS</h4>
+          <h4>NYAKSHA Soft.</h4>
           <p>
             Start maximizing your returns effortlessly.
           </p>
           <ul class="social-icons">
-            <li><a rel="nofollow" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+            <li><a rel="nofollow" href="https://x.com/nyaksha61?t=ExXBOKxPQc3MExJy4rjwig&s=09" target="_blank"><i class="fa fa-twitter"></i></a>
             </li>
-            <li><a href="https://www.facebook.com/share/azf8bpN276dzf8Jx/?mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="https://www.instagram.com/nyaksha2024?igsh=MTZ3cGM0ZjVxOGwweQ%3D%3D&utm_source=qr"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/share/azf8bpN276dzf8Jx/?mibextid=LQQJ4d" target="_blank"><i
+                  class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/nyaksha2024?igsh=MTZ3cGM0ZjVxOGwweQ%3D%3D&utm_source=qr" target="_blank"><i
+                  class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
         <div class="col-md-3 footer-item">
           <h4>Useful Links</h4>
           <ul class="menu-list">
             <li><a href="/disclaimer">Disclaimer</a></li>
+            <li><a href="/what-is-nyaksha">Blogs</a></li>
             <li><a href="/termsofuse">Terms Of Use</a></li>
             <li><a href="/refundpolicy">Refund Policy</a></li>
             <li><a href="/indicator" target="_blank">Indicator</a></li>
@@ -203,6 +213,7 @@
           <h4>Additional Pages</h4>
           <ul class="menu-list">
             <li><a href="/about">About Us</a></li>
+            <li><a href="/what-is-nyaksha">Blogs</a></li>
             <li><a href="/contact">Quick Support</a></li>
             <li><a href="/contact">Contact Us</a></li>
             <li><a href="/privacypolicy">Privacy Policy</a></li>

@@ -7,6 +7,7 @@ from dashboard.views import error_404_view, error_500_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('social-auth/', include('social_django.urls',namespace='social')),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('api/', include('apis.urls')),
     path('', include('home.urls')),
     path('', include('dashboard.urls')),

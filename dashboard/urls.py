@@ -14,5 +14,6 @@ urlpatterns = [
     path("contactus",contactus,name='contactus'),
     # # POLICY
     path("indicator",indicator,name='indicator'),
+    path('<slug:slug>',post_detail, name='post_detail'),
     path("logout/",handlelogout,name='logout'),
 ]

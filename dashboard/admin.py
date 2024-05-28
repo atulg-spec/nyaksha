@@ -57,6 +57,18 @@ class Order(admin.ModelAdmin):
 admin.site.register(brokers)
 admin.site.register(users)
 
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'created_at', 'slug')
+    readonly_fields = ('slug',)
+
+    def save_model(self, request, obj, form, change):
+        if not obj.slug:
+            obj.slug = slugify(obj.title)
+        obj.save()
+
+admin.site.register(Post, PostAdmin)
+
+
 from social_django.models import Nonce,UserSocialAuth,Association
 from social_django.admin import Nonce,UserSocialAuth,Association
 admin.site.unregister(Nonce)

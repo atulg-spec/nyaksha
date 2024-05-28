@@ -180,6 +180,15 @@ def webhook(request,url):
 # ---------END WEBHOOK-------------
 
 
+def post_detail(request, slug):
+    all_post = Post.objects.all()
+    post = get_object_or_404(Post, slug=slug)
+    context = {
+        'all_post': all_post,
+        'post': post
+        }
+    return render(request, 'blog/post.html', context)
+
 # PAGES 
 def handlelogout(request):
     logout(request)
