@@ -1,11 +1,14 @@
 {% extends 'home/base.html' %}
+
 {% block metatags %}
 <meta name="description" content="{{post.short_description}}" />
 <meta name="keywords" content="{{post.keywords}}">
 <link rel="canonical" href="{{post.referance_url}}">
 <meta name="author" content="{{post.author}}">
 {% endblock metatags %}
+
 {% block title %}{{post.title}}{% endblock title %}
+
 {% block body %}
 <div class="page-heading header-text">
     <div class="container">
@@ -16,13 +19,38 @@
         </div>
     </div>
 </div>
+
 <section id="blog">
-    <div class="more-info about-info">
-        <div class="container mb-4 mt-4">
-            {{post.blog|safe}}
+    <div class="row">
+        <div class="col-md-10">
+            <div class="more-info about-info">
+                <div class="container mb-4 mt-2">
+                    {{post.blog|safe}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mt-4">
+            <center>
+                <div class="mx-4">
+                    <iframe src="//a.magsrv.com/iframe.php?idzone=5319312&size=300x250" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+                </div>
+            </center>
         </div>
     </div>
 </section>
+
+<!-- Ad section within the content -->
+<div class="container my-4">
+    ads here
+    <div class="ad-section text-center">
+        <!-- Insert your ad code here -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXX" data-ad-slot="YYYYYY"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>
 <center>
     <div class="col-md-10">
         <div class="service-item">
@@ -37,6 +65,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Ad section within the recent blogs section -->
+    <div class="ad-section text-center my-4">
+        <!-- Insert your ad code here -->
+        ads here
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXX" data-ad-slot="YYYYYY"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <br><br><br><br>
     </div>
 </center>
